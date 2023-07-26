@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, HttpResponse
 from core.EmailBackEnd import EmailBackEnd
-from django.contrib.auth import authenticate, logout, login
+from django.contrib.auth import logout, login
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from core.models import CustomUser
 
+@login_required(login_url='/')
 def BASE(request):
     return render(request, 'base.html')
 
@@ -22,9 +23,9 @@ def doLogin(request):
             if user_type == '1':
                 return redirect('hod_home')
             elif user_type == '2':
-                return HttpResponse('This is the STAFF Panel')
+                return redirect('staff_home')
             elif user_type == '3':
-                return HttpResponse('This is the STUDENT Panel')
+                return redirect('student_home')
             else:
                 messages.error(request, 'Email and Password are Invalid!')
                 return redirect('login')
@@ -52,8 +53,8 @@ def PROFILE_UPDATE(request):
         profile_pic = request.FILES.get('profile_pic')
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
-        #email = request.POST.get('email')
-        #username = request.POST.get('username')
+        # email = request.POST.get('email')
+        # username = request.POST.get('username')
         password = request.POST.get('passworrd')
 
         try:
