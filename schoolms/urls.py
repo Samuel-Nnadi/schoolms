@@ -58,6 +58,7 @@ urlpatterns = [
     path('hod/student/leave_view', hod_views.STUDENT_LEAVE_VIEW, name='student_leave_view'),
     path('hod/student/approve_leave/<str:id>', hod_views.STUD_APPROVE_LEAVE, name='stud_approve_leave'),
     path('hod/student/disapprove_leave/<str:id>', hod_views.STUD_DISAPPROVE_LEAVE, name='stud_disapprove_leave'),
+    path('hod/view_attendance', hod_views.VIEW_ATTENDANCE, name='view_attendance'),
 
     # Staff Panel Url
     path('staff/home', staff_views.HOME, name='staff_home'),
@@ -69,7 +70,9 @@ urlpatterns = [
     path('staff/feedback/save', staff_views.STAFF_FEEDBACK_SAVE, name='staff_feedback_save'),
     path('staff/take_attendance', staff_views.STAFF_TAKE_ATTENDANCE, name='staff_take_attendance'),
     path('staff/save_attendance', staff_views.STAFF_SAVE_ATTENDANCE, name='staff_save_attendance'),
-    path('staff/view_attendance', staff_views.VIEW_ATTENDANCE, name='view_attendance'),
+    path('staff/view_attendance', staff_views.STAFF_VIEW_ATTENDANCE, name='staff_view_attendance'),
+    path('staff/add_result', staff_views.STAFF_ADD_RESULT, name='staff_add_result'),
+    path('staff/save_result', staff_views.STAFF_SAVE_RESULT, name='staff_save_result'),
 
     # Student Panel Url
     path('student/home', students_views.HOME, name='student_home'),
@@ -79,6 +82,7 @@ urlpatterns = [
     path('student/feedback/save', students_views.STUDENT_FEEDBACK_SAVE, name='student_feedback_save'),
     path('student/apply_leave', students_views.STUDENT_LEAVE_APPLY, name='student_leave_apply'),
     path('student/apply_leave_save', students_views.STUDENT_LEAVE_SAVE, name='student_leave_save'),
-    path('student/view_attendance', students_views.VIEW_ATTENDANCE, name='view_attendance'),
+    path('student/view_attendance', students_views.STUDENT_VIEW_ATTENDANCE, name='student_view_attendance'),
+    path('student/view_result', students_views.STUDENT_VIEW_RESULT, name='student_view_result'),
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

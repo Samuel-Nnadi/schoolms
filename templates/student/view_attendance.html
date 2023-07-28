@@ -5,7 +5,7 @@
   <div class="col-sm-12">
     <div class="card">
       <div class="card-body">
-        <form method="post" action="?action=show_attedance">
+        <form method="post" action="?action=show_attendance">
           {% csrf_token %}
           <div class="col-12">
             <h5 class="form-title"><span>View Attendance</span></h5>
@@ -63,28 +63,17 @@
                       <table id="table_id" class="table table-hover table-center mb-0">
                         <thead>
                           <tr>
-                            <th>ID</th>
-                            <th>Subject</th>
+                            <th>Date</th>
+                            <th>Subject Name</th>
                             <th>Session Year</th>
                           </tr>
                         </thead>
                         <tbody>
-                          {% for i in course %}
+                          {% for i in attendance_report %}
                           <tr>
-                            <td>{{i.id}}</td>
-                            <td>{{i.name}}</td>
-                            <td>{{i.created_at}}</td>
-                            <td>{{i.updated_at}}</td>
-                            <td class="text-right">
-                              <div class="actions">
-                                <a href="{% url 'edit_course' i.id %}" class="btn btn-sm bg-success-light mr-2">
-                                  <i class="fas fa-pen"></i>
-                                </a>
-                                <a href="{% url 'delete_course' i.id %}" class="btn btn-sm bg-danger-light">
-                                  <i class="fas fa-trash"></i>
-                                </a>
-                              </div>
-                            </td>
+                            <td>{{i.attendance_id.attendance_data}}</td>
+                            <td>{{i.attendance_id.subject_id.name}}</td>
+                            <td>{{i.attendance_id.session_year_id.session_start}} TO {{i.attendance_id.session_year_id.session_end}}</td>
                           </tr>
                           {% endfor %}
                         </tbody>
